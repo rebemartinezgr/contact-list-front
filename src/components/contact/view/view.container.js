@@ -7,15 +7,12 @@ import * as Constants from '../../constants'
 
 function ViewContact() {
   const navigate = useNavigate();
-  const { id } = useParams()
   const [contact, setContact] = useState({})
   const [history, setHistory] = useState([])
+  const { id } = useParams()
 
   useEffect(()=>{
-    fetchContact() 
-  },[])
-
-  const fetchContact = async () => {
+    const fetchContact = async () => {
       await axios.get(`${Constants.API_ENDPOINT}${id}`).then(({data})=>{
         setHistory(data.contacts.history)
         setContact(data.contacts)
@@ -33,7 +30,10 @@ function ViewContact() {
           navigate("/")
       })
     }
+    fetchContact() 
+  },[])
 
+  
 
   return (
     <ViewUI contact={contact} history={history}/>

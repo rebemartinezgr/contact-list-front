@@ -13,11 +13,16 @@ function ViewUI(props) {
               <hr />
               <div className="history">
                 <Timeline>
-                <Event interval={"Current"} 
+                {
+                  props.contact.first_name && 
+                  (
+                    <Event interval={"Current"} 
                     title={props.contact.first_name + " " + props.contact.last_name} 
                     subtitle={props.contact.email} >
                     {props.contact.phone}
-                </Event>
+                    </Event>
+                  )           
+                }
                 {props.history.map(function(elem){
                     return (
                         <Event

@@ -6,7 +6,7 @@ import * as Constants from '../../constants'
 
 function List() {
 
-    const [contacts, setContacts] = useState([])
+    const [contacts, setContacts] = useState({})
 
     useEffect(()=>{
         fetchContacts() 
